@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.andriikhovanets.redditposts.Constant.EMPTY
-import com.andriikhovanets.redditposts.data.model.RedditPost
-import com.andriikhovanets.redditposts.data.repository.PostRepository
 import com.andriikhovanets.redditposts.Constant.POSTS_LIMIT
+import com.andriikhovanets.redditposts.data.model.RedditPost
 import com.andriikhovanets.redditposts.data.model.RedditWrapper
+import com.andriikhovanets.redditposts.data.repository.PostRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -37,7 +37,7 @@ class PostsViewModel @Inject constructor(private val repository: PostRepository)
     }
 
     private fun nextAfter(lastPost: RedditPost?): String? {
-        return when(lastPost) {
+        return when (lastPost) {
             null -> EMPTY
             else -> lastPost.name
         }

@@ -13,12 +13,12 @@ import javax.inject.Inject
 
 class PostsFragment : BaseListFragment(R.layout.fragment_reddit_list) {
 
-    override val viewAdapter = PostsAdapter()
-
     lateinit var viewModel: PostsViewModel
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    override val viewAdapter = PostsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,7 @@ class PostsFragment : BaseListFragment(R.layout.fragment_reddit_list) {
         viewModel.postData.observe(this, Observer {
             handlePosts(it)
         })
+
         handleClick()
     }
 

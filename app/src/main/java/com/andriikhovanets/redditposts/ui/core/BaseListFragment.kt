@@ -26,7 +26,6 @@ abstract class BaseListFragment(@LayoutRes contentLayoutId: Int) : Fragment(cont
             layoutManager = lm
             adapter = viewAdapter
         }
-
     }
 
     protected fun setOnItemClickListener(func: (Any?, View) -> Unit) {
