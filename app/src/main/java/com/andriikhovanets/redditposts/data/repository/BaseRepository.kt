@@ -19,7 +19,6 @@ open class BaseRepository {
 
     private suspend fun <T: Any> apiResult(call: suspend ()-> Response<T>, errorMessage: String) : Result<T> {
         val response = call.invoke()
-        val e = response.body().toString()
         if(response.isSuccessful) return Result.Success(response.body()!!)
         return Result.Error(IOException("Error Occurred during getting safe Api result, Custom ERROR - $errorMessage"))
     }

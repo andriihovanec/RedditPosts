@@ -25,6 +25,9 @@ buildscript {
         espressoVersion = '3.2.0'
         okHttpVersion = '3.8.1'
         dagger2Version = '2.25.2'
+        glideVersion = '4.11.0'
+        browserVersion = '1.2.0'
+        jodaTimeVersion = '2.10.5'
     }
     repositories {
         google()

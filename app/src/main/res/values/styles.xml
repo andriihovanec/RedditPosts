@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="RobotoBoldBlackMedium">
+    <style name="RobotoBoldMediumBlack">
         <item name="android:textSize">@dimen/text_size_medium</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:fontFamily">sans-serif</item>

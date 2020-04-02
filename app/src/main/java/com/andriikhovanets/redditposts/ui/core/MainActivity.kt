@@ -1,4 +1,4 @@
-package com.andriikhovanets.redditposts.ui
+package com.andriikhovanets.redditposts.ui.core
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        App.appComponent.inject(this)
     }
 }

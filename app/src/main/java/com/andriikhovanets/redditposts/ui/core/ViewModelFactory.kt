@@ -1,4 +1,4 @@
-package com.andriikhovanets.redditposts.ui.posts
+package com.andriikhovanets.redditposts.ui.core
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

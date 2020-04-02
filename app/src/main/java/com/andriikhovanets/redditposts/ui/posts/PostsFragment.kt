@@ -1,15 +1,19 @@
 package com.andriikhovanets.redditposts.ui.posts
 
+import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.andriikhovanets.redditposts.App
 import com.andriikhovanets.redditposts.R
-import com.andriikhovanets.redditposts.ui.App
+import com.andriikhovanets.redditposts.data.model.RedditPost
+import com.andriikhovanets.redditposts.ui.core.BaseListFragment
 import javax.inject.Inject
 
-class PostsFragment : Fragment(R.layout.fragment_reddit_list) {
+class PostsFragment : BaseListFragment(R.layout.fragment_reddit_list) {
+
+    override val viewAdapter = PostsAdapter()
 
     lateinit var viewModel: PostsViewModel
 
@@ -23,12 +27,30 @@ class PostsFragment : Fragment(R.layout.fragment_reddit_list) {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProvider(this).get(PostsViewModel::class.java)
 
-        viewModel = ViewModelProvider(this,viewModelFactory)[PostsViewModel::class.java]
-        viewModel.getPosts()
+        viewModel = ViewModelProvider(this, viewModelFactory)[PostsViewModel::class.java]
+        viewModel.loadPosts()
         viewModel.postData.observe(this, Observer {
-            Toast.makeText(context, "${it.kind}", Toast.LENGTH_SHORT).show()
+            handlePosts(it)
         })
+        handleClick()
+    }
+
+    private fun handlePosts(posts: List<RedditPost>) {
+        viewAdapter.clear()
+        viewAdapter.add(posts)
+        viewAdapter.notifyDataSetChanged()
+    }
+
+    private fun handleClick() {
+        setOnItemClickListener { it, v ->
+            (it as? RedditPost)?.let {
+                CustomTabsIntent.Builder()
+                    .setStartAnimations(v.context, R.anim.slide_in_right, R.anim.slide_out_left)
+                    .setExitAnimations(v.context, R.anim.slide_in_left, R.anim.slide_out_right)
+                    .build()
+                    .launchUrl(v.context, Uri.parse(it.url))
+            }
+        }
     }
 }

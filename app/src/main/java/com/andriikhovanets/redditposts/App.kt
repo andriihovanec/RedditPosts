@@ -1,4 +1,4 @@
-package com.andriikhovanets.redditposts.ui
+package com.andriikhovanets.redditposts
 
 import android.app.Application
 import com.andriikhovanets.redditposts.di.AppModule
@@ -30,6 +30,5 @@ class App : Application() {
 @Component(modules = [AppModule::class, RemoteModule::class, ViewModelModule::class])
 interface AppComponent {
 
-    fun inject(activity: MainActivity)
     fun inject(fragment: PostsFragment)
 }

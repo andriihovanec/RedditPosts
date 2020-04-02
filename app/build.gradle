@@ -54,9 +54,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
 
-    // paging
-    implementation "androidx.paging:paging-runtime:$rootProject.pagingVersion"
-
     // retrofit2
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
     implementation "com.squareup.retrofit2:converter-moshi:$rootProject.retrofit2Version"
@@ -72,6 +69,16 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$rootProject.dagger2Version"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideVersion"
+
+    // time util
+    implementation "joda-time:joda-time:$rootProject.jodaTimeVersion"
+
+    // custom tabs
+    implementation "androidx.browser:browser:$rootProject.browserVersion"
 
     // testing dependencies
     testImplementation "junit:junit:$rootProject.junitVersion"
